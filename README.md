@@ -1,119 +1,57 @@
-# Minimal FastAPI Project Base
+# ML Engineer Portfolio
 
-A streamlined foundation for building Python web applications using FastAPI.
+A professional portfolio website for an ML Engineer built with NiceGUI and Python.
 
 ## Features
 
-- **FastAPI Core**: Leverages the high-performance FastAPI framework.
-- **Docker Support**: Production-ready containerization with a multi-stage Dockerfile.
-- **Fly.io Optimized**: Includes a `fly.toml` for easy deployment with auto-scaling and cost-saving measures.
-- **Health Monitoring**: Basic health check endpoint (`/health`) included.
-- **Environment Configuration**: Uses `.env` files for managing settings.
+- Responsive design that works on desktop and mobile
+- Professional sections for showcasing ML projects
+- Skills visualization with progress bars
+- Experience and education timeline
+- Contact form for potential employers or collaborators
+- Modern UI with smooth animations and transitions
 
-## Project Structure
+## Setup Instructions
 
-```
-project_base/
-├── app/                  # Main application package
-│   ├── __init__.py       # Initializes the FastAPI app object from app.main
-│   └── main.py           # Defines FastAPI routes and application logic
-├── .dockerignore         # Specifies intentionally untracked files for Docker
-├── .env                  # Environment variables (create this file based on .env.example if provided)
-├── Dockerfile            # Container configuration
-├── fly.toml              # fly.io deployment configuration
-├── main.py               # Application entry point (runs the Uvicorn server)
-├── README.md             # This file
-└── requirements.txt      # Python dependencies
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.8+
-- Docker (optional, for containerized deployment)
-- Fly.io account and `flyctl` CLI (optional, for Fly.io deployment)
-
-### Installation
-
-1.  **Clone the repository (if applicable)**
-2.  **Create and activate a virtual environment:**
-    ```bash
-    python -m venv venv
-    # On Windows
-    # venv\Scripts\activate
-    # On macOS/Linux
-    # source venv/bin/activate
-    ```
-3.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  **Create a `.env` file** in the `project_base` directory (you can copy `.env.example` if one exists and modify it). At a minimum, it might look like this if you want to change the default port:
-    ```env
-    PORT=8000
-    HOST=0.0.0.0
-    ```
-    If no `.env` file is present, the application will use default values (e.g., port 8000).
-
-### Running the Application Locally
-
-Execute the main application script:
-
-```bash
-python main.py
-```
-
-The application will typically be available at `http://0.0.0.0:8000` (or the port specified in your `.env` file).
-
-## API Endpoints
-
--   `GET /`: Returns a welcome message.
--   `GET /health`: Returns a health status, useful for monitoring.
-
-## Deployment
-
-### Docker Deployment
-
-1.  **Build the Docker image:**
-    ```bash
-    docker build -t my-fastapi-app .
-    ```
-2.  **Run the Docker container:**
-    ```bash
-    docker run -p 8000:8000 -d my-fastapi-app
-    ```
-    Replace `8000:8000` with `<host_port>:<container_port>` if you need to map to a different host port. The container port is determined by the `PORT` environment variable set in the `Dockerfile` or `fly.toml` (defaulting to 8000).
-
-### Fly.io Deployment
-
-1.  **Install `flyctl`**: Follow the instructions at [fly.io/docs/hands-on/install-flyctl/](https://fly.io/docs/hands-on/install-flyctl/).
-2.  **Login to Fly.io**: `fly auth login`
-3.  **Launch the app (first time only)**:
-    ```bash
-    fly launch --name your-unique-app-name --region sin
-    ```
-    (Replace `your-unique-app-name` and `sin` (Singapore) with your desired app name and region. This will also create a `fly.toml` if one doesn't exist, or update the existing one.)
-4.  **Deploy changes**:
-    ```bash
-    fly deploy
-    ```
-
-The `fly.toml` file is pre-configured for auto-scaling and to stop machines when idle to save costs.
+1. Clone this repository
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Create an `assets` folder in the project root directory
+4. Add your profile picture as `assets/profile.jpg`
+5. Add project images as `assets/project1.jpg`, `assets/project2.jpg`, etc.
+6. (Optional) Add a background image as `assets/hero-bg.jpg`
+7. Customize your information in the `ml_engineer` dictionary in `main.py`
+8. Run the application:
+   ```
+   python main.py
+   ```
+9. Open your browser and navigate to `http://localhost:8080`
 
 ## Customization
 
--   **Add new API endpoints**: Modify `project_base/app/main.py` to include new routes and logic.
--   **Modify dependencies**: Update `project_base/requirements.txt` and reinstall.
--   **Adjust Docker configuration**: Edit `project_base/Dockerfile`.
--   **Change deployment settings**: Update `project_base/fly.toml` for Fly.io.
+You can easily customize this portfolio by editing the `ml_engineer` dictionary in `main.py`. Update the following information:
 
-## Core Principles for Development
+- Personal details (name, title, bio, contact information)
+- Skills and proficiency levels
+- Projects with descriptions and technologies
+- Work experience
+- Education history
+- Certifications
 
-While this base is minimal, consider these principles as you expand your application:
+You can also modify the color scheme by editing the `colors` dictionary.
 
--   **Modularity**: Keep code organized into logical modules.
--   **Clarity**: Write clear, understandable code with type hints where appropriate.
--   **Testing**: Implement unit and integration tests for new features.
--   **Security**: Follow security best practices (input validation, authentication if needed, etc.).
--   **Documentation**: Keep this README and code comments up-to-date.
+## Deployment
+
+This application can be deployed to any platform that supports Python applications. Some options include:
+
+- Heroku
+- PythonAnywhere
+- AWS Elastic Beanstalk
+- Google Cloud Run
+- Vercel (with serverless functions)
+
+## License
+
+This project is open source and available under the MIT License.
